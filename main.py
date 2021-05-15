@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((800,600))
 #background
 background = pygame.image.load('./Image/background.png')
 #background sound
-mixer.music.load('./Image/background.wav')
+mixer.music.load('./music/background.wav')
 mixer.music.play(-1)
 
 # title and icon
@@ -73,8 +73,8 @@ def fire_bullet(x,y):
     screen.blit(bulletImg,(x+16,y+10))
     
 
-def isCollision(enemyX,enemyY,bulletX,bulletY):
-    dist = math.sqrt(math.pow(enemyX-bulletX,2) + math.pow(enemyY-bulletY,2) )
+def isCollision(aX,aY,bX,bY):
+    dist = math.sqrt(math.pow(aX-bX,2) + math.pow(aY-bY,2) )
     if dist < 27:
         return True
     else:
@@ -96,7 +96,7 @@ while running:
                     playerX_change = 3.5
                 if event.key == pygame.K_SPACE:
                     if bullet_state is "ready":
-                        bullet_Sound = mixer.Sound('./Image/laser.wav')
+                        bullet_Sound = mixer.Sound('./music/laser.wav')
                         bullet_Sound.play()
                         bulletX = playerX
                         fire_bullet(bulletX,bulletY)
@@ -123,7 +123,7 @@ while running:
         # collision 
         collision = isCollision(enemyX[i],enemyY[i],bulletX,bulletY)
         if collision:
-            explosion_Sound = mixer.Sound('./Image/explosion.wav')
+            explosion_Sound = mixer.Sound('./music/explosion.wav')
             explosion_Sound.play()
             bulletY = 480
             bullet_state = "ready"
