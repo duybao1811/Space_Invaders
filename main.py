@@ -121,6 +121,8 @@ class Player(Ship):
                     if bullet.collision(obj):
                         objs.remove(obj)
                         self.bullets.remove(bullet)
+                        explosion_Sound = mixer.Sound('./music/explosion.wav')
+                        explosion_Sound.play()
 
                         
 
@@ -217,8 +219,11 @@ def main():
         if keys[pygame.K_DOWN]:
             player.y += playerY_change
         
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE]:       
+            laser_Sound = mixer.Sound('./music/laser.wav')
+            laser_Sound.play()
             player.shoot()
+
         if player.x <= 0:
             player.x = 0
         elif player.x >= 736:
