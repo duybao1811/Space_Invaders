@@ -173,7 +173,9 @@ def main():
     enemy_bulletY_change = 5
     bulletY_change = 10
     def redraw_window():
+        #background image
         screen.blit(background,(0,0))
+        #level,lives
         level_label = main_font.render(f"Level: {level}",1,(255,255,255))
         lives_label = main_font.render(f"Lives: {lives}",1,(255,255,255))
         screen.blit(level_label,(650,0))
